@@ -1,2 +1,4 @@
 node_modules
 fontend/build
+frontend/.env
+backend/.env

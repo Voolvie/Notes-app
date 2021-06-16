@@ -8,7 +8,11 @@ function Note(props) {
         setShowDesc(!showDesc)
     }
     const editHandler = () => {
-        props.onEdit({ title: props.title, body: props.body, id: props.id })
+        props.onEdit({ 
+            title: props.title, 
+            body: props.body, 
+            _id: props._id
+         })
     }
     const deleteHandler = () => {
         props.onDelete(props.id)
