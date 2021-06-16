@@ -15,7 +15,7 @@ function Note(props) {
          })
     }
     const deleteHandler = () => {
-        props.onDelete(props.id)
+        props.onDelete(props._id)
     }
 
     return (

@@ -5,6 +5,9 @@ import NewNote from './NewNote/NewNote'
 import Modal from 'react-modal'
 import EditNote from './EditNote/EditNote'
 import axios from '../../axios'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 
 
 class Notes extends React.Component {
@@ -42,13 +45,17 @@ class Notes extends React.Component {
     }
 
     async addNote(note) {
-        const notes = [...this.state.notes]
+        try {
+            const notes = [...this.state.notes]
         //dodaj na backend
        const res = await axios.post('/notes', note)
        const newNote = res.data
         //dodaj na fronte
         notes.push(newNote)
         this.setState({notes})
+        } catch(err) {
+            NotificationManager.error('Uzupełnij wszystkie pola')
+        }
     }
 
     async editNote(note) {
@@ -85,6 +92,8 @@ class Notes extends React.Component {
         
         return(
         <div>
+            <NotificationContainer />
+
             <p>Moje notatki:</p>
 
             <NewNote
